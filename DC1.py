@@ -1,10 +1,13 @@
+import collections
+import itertools
 import os
-import nltk.classify.util
+import nltk.metrics
+
 from nltk.classify import NaiveBayesClassifier
+from nltk.collocations import BigramCollocationFinder
 from nltk.corpus import movie_reviews
 from nltk.corpus import stopwords
-
-# test
+from nltk.metrics import BigramAssocMeasures
 from nltk.tokenize import word_tokenize
 
 '''text = "God is Great! I won a lottery."
@@ -27,6 +30,13 @@ def tokened_list(path):
     return input_reviews
 
 
+# bigram collocation to increase accuracy
+# not sure if I am using this correctly -Alexis
+def bigram_word_feats(words, score_fn=BigramAssocMeasures.chi_sq, n=200):
+    bigram_finder = BigramCollocationFinder.from_words(words)
+    bigrams = bigram_finder.nbest(score_fn, n)
+    return dict([(ngram, True) for ngram in itertools.chain(words, bigrams)])
+
 # print(tokened_list(pathpositive)[1])
 
 input_reviews = []
@@ -46,6 +56,7 @@ if __name__ == '__main__':
     # Load positive and negative reviews
     positive_fileid = movie_reviews.fileids('pos')
     negative_fileid = movie_reviews.fileids('neg')
+
 '''
 #tokenized the reviews
 positive_tokened = [movie_reviews.words(fileids=[f])for f in positive_fileid]
@@ -82,6 +93,23 @@ features_test = features_positive[threshold_positive:] + features_negative[thres
 # print(filtered_words_pos[1])
 
 classifier = NaiveBayesClassifier.train(features_train)
+refsets = collections.defaultdict(set)
+testsets = collections.defaultdict(set)
+
+for i, (feats, label) in enumerate(features_test):
+    refsets[label].add(i)
+    observed = classifier.classify(feats)
+    testsets[observed].add(i)
+
+
+# if you comment these print lines out below, you will see the improved accuracy
+print('accuracy:', nltk.classify.util.accuracy(classifier, features_train))
+print('pos precision:', nltk.metrics.precision(refsets['pos'], testsets['pos']))
+print('pos recall:', nltk.metrics.recall(refsets['pos'], testsets['pos']))
+print('neg precision:', nltk.metrics.precision(refsets['neg'], testsets['neg']))
+print('neg recall:', nltk.metrics.recall(refsets['neg'], testsets['neg']))
+
+classifier.show_most_informative_features()
 print("Accuracy of the classifier: ", nltk.classify.util.accuracy(classifier, features_test))
 
 print("Predictions: ")
