@@ -42,7 +42,20 @@ def bigram_word_feats(words, score_fn=BigramAssocMeasures.chi_sq, n=200):
 input_reviews = []
 path = "/Users/yanyan/PycharmProjects/NLP-DC1/unlabeled"
 
-for f in sorted(os.listdir(path)):
+#for f in os.listdir(path):
+ #   os.rename(f , f[10:])
+
+'''for filename in os.listdir(path):
+    filename = filename.replace('unlabeled_', '')
+    input_reviews = []
+'''
+
+def natural_key(string_):
+    """See http://www.codinghorror.com/blog/archives/001018.html"""
+    return [int(s) if s.isdigit() else s for s in re.split(r'(\d+)', string_)]
+
+for f in sorted(os.listdir(path),key=natural_key):
+    print(f)
     if f[-4:] == '.txt':
         file = open(path + "/" + f, 'r')
         input_reviews.append(file.read())
