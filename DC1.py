@@ -1,12 +1,12 @@
 import collections
 import itertools
-import os
-import nltk.metrics
+import os,glob, re
+import nltk.classify.util, nltk.metrics
 
 from nltk.classify import NaiveBayesClassifier
-from nltk.collocations import BigramCollocationFinder
 from nltk.corpus import movie_reviews
 from nltk.corpus import stopwords
+from nltk.collocations import BigramCollocationFinder
 from nltk.metrics import BigramAssocMeasures
 from nltk.tokenize import word_tokenize
 
@@ -15,9 +15,9 @@ filtered_list = [word for word in word_tokenize(text) if word.lower() not in sto
 print(word_tokenize(text))
 print(filtered_list)'''
 
-pathunlabled = "D:/Github_Projects/NLP-DC1/unlabeled"
-pathpositive = "D:/Github_Projects/NLP-DC1/pos"
-pathnegative = "D:/Github_Projects/NLP-DC1/neg"
+pathunlabled = "/Users/yanyan/PycharmProjects/NLP-DC1/unlabeled"
+pathpositive = "/Users/yanyan/PycharmProjects/NLP-DC1/pos"
+pathnegative = "/Users/yanyan/PycharmProjects/NLP-DC1/neg"
 
 
 def tokened_list(path):
@@ -40,12 +40,12 @@ def bigram_word_feats(words, score_fn=BigramAssocMeasures.chi_sq, n=200):
 # print(tokened_list(pathpositive)[1])
 
 input_reviews = []
-path = "D:/Github_Projects/NLP-DC1/unlabeled"
-for f in os.listdir(path):
+path = "/Users/yanyan/PycharmProjects/NLP-DC1/unlabeled"
+
+for f in sorted(os.listdir(path)):
     if f[-4:] == '.txt':
         file = open(path + "/" + f, 'r')
         input_reviews.append(file.read())
-
 
 def features(list):
     # filtered_list = [word for word in list if word.lower() not in stopwords.words('english')]
@@ -96,21 +96,25 @@ classifier = NaiveBayesClassifier.train(features_train)
 refsets = collections.defaultdict(set)
 testsets = collections.defaultdict(set)
 
+#print(refsets)
+
 for i, (feats, label) in enumerate(features_test):
     refsets[label].add(i)
     observed = classifier.classify(feats)
     testsets[observed].add(i)
 
-
+'''
 # if you comment these print lines out below, you will see the improved accuracy
-print('accuracy:', nltk.classify.util.accuracy(classifier, features_train))
-print('pos precision:', nltk.metrics.precision(refsets['pos'], testsets['pos']))
-print('pos recall:', nltk.metrics.recall(refsets['pos'], testsets['pos']))
-print('neg precision:', nltk.metrics.precision(refsets['neg'], testsets['neg']))
-print('neg recall:', nltk.metrics.recall(refsets['neg'], testsets['neg']))
-
+print('accuracy:', nltk.classify.util.accuracy(classifier, features_test))
+print('pos precision:', precision(refsets['pos'], testsets['pos']))
+print('pos recall:', recall(refsets['pos'], testsets['pos']))
+print('neg precision:', precision(refsets['neg'], testsets['neg']))
+print('neg recall:', recall(refsets['neg'], testsets['neg']))
 classifier.show_most_informative_features()
+'''
 print("Accuracy of the classifier: ", nltk.classify.util.accuracy(classifier, features_test))
+
+
 
 print("Predictions: ")
 
