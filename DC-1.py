@@ -9,7 +9,24 @@ import itertools
 from nltk.collocations import BigramCollocationFinder
 from nltk.metrics import BigramAssocMeasures
 
+'''
+pos_reviews = []
+neg_reviews = []
+pathpos = os.getcwd()+"/pos"
+pathneg = os.getcwd()+"/neg"
+for f in os.listdir(pathpos):
+    if f[-4:] == '.txt':
+        file = open(pathpos + "/" + f, 'r')
 
+        pos_reviews.append(file.read())
+
+for f in os.listdir(pathneg):
+    if f[-4:] == '.txt':
+        file = open(pathneg + "/" + f, 'r')
+        neg_reviews.append(file.read())
+
+
+'''
 # DC Medium
 def evaluate_classifier(method):
     positive_fileid = movie_reviews.fileids('neg')
@@ -17,6 +34,8 @@ def evaluate_classifier(method):
 
     features_negative= [(method(movie_reviews.words(fileids=[f])), 'neg') for f in positive_fileid]
     features_positive = [(method(movie_reviews.words(fileids=[f])), 'pos') for f in negative_fileid]
+#    features_negative = [(method(f), 'neg') for f in pos_reviews]
+#    features_positive = [(method(f), 'pos') for f in neg_reviews]
 
     # Split the data into train and test (8/2)
     threshold_factor = 0.8
@@ -41,7 +60,7 @@ def evaluate_classifier(method):
     print('pos recall:', recall(trainsets['pos'], testsets['pos']))
     print('neg precision:', precision(trainsets['neg'], testsets['neg']))
     print('neg recall:', recall(trainsets['neg'], testsets['neg']))
-    #classifier.show_most_informative_features()
+    classifier.show_most_informative_features()
     return classifier
 
 
@@ -105,22 +124,21 @@ for f in sorted(os.listdir(path),key=natural_key):
         input_reviews.append(file.read())
 
 
-#for x in range(0, 10):
 for x in range(0, len(input_reviews)):
     review = input_reviews[x]
     rate = desired_rate[x]
-    #print("\nReview:", review)
     probdist_naive = classifier_naive.prob_classify(features(review.split())).max()
     probdist_stopword = classifier_stopword.prob_classify(stopword(review.split())).max()
     probdist_bigram = classifier_bigram.prob_classify(bigram(review.split())).max()
     raise_flag(probdist_naive, rate,flags_n)
     raise_flag(probdist_stopword, rate,flags_s)
     raise_flag(probdist_bigram , rate,flags_b)
-    #print("Predicted sentiment: ", probdist_sentiment)
+    #print("\nReview:", review)
+    #print("Predicted sentiment: ", probdist_naive)
     #print(desired_rate[x])
     #else:
     #    print("good")
 
-print(len(flags_n))
-print(len(flags_s))
-print(len(flags_b))
+print("Inconsistency detected by Naive Baye's Classifier:" +len(flags_n)/ len(input_reviews))
+print("Inconsistency detected by Naive Baye's Classifier with Stopwords:" + len(flags_s)/len(input_reviews))
+print("Inconsistency detected by Naive Baye's Classifier with Bigram Collocation:" + len(flags_b)/len(input_reviews))
