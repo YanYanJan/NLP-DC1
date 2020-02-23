@@ -139,6 +139,6 @@ for x in range(0, len(input_reviews)):
     #else:
     #    print("good")
 
-print("Inconsistency detected by Naive Baye's Classifier:" +len(flags_n)/ len(input_reviews))
-print("Inconsistency detected by Naive Baye's Classifier with Stopwords:" + len(flags_s)/len(input_reviews))
-print("Inconsistency detected by Naive Baye's Classifier with Bigram Collocation:" + len(flags_b)/len(input_reviews))
+print("Inconsistency detected by Naive Baye's Classifier:" , len(flags_n)/ len(input_reviews))
+print("Inconsistency detected by Naive Baye's Classifier with Stopwords:" , len(flags_s)/len(input_reviews))
+print("Inconsistency detected by Naive Baye's Classifier with Bigram Collocation:" , len(flags_b)/len(input_reviews))
