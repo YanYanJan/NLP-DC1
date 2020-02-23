@@ -27,13 +27,15 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.DC-1">
-    <configuration name="DC-1" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="NLP-DC1" />
+  <component name="RunManager">
+    <configuration name="DC1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -44,7 +46,8 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DC-1.py" />
+      <module name="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DC1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -53,8 +56,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="DC1" type="PythonConfigurationType" factoryName="Python">
-      <module name="NLP-DC1" />
+    <configuration name="DC1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -65,7 +67,8 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DC1.py" />
+      <module name="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DC-1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -76,7 +79,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.DC-1" />
+        <item itemvalue="Python.DC1" />
+        <item itemvalue="Python.DC1" />
       </list>
     </recent_temporary>
   </component>
@@ -117,22 +121,30 @@
       <screen x="0" y="23" width="1440" height="797" />
     </state>
     <state x="463" y="58" key="#DC1/0.23.1440.797@0.23.1440.797" timestamp="1581560525585" />
-    <state width="1278" height="280" key="GridCell.Tab.0.bottom" timestamp="1582436965476">
+    <state x="398" y="36" key="#DC1_(1)" timestamp="1582438649086">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1278" height="280" key="GridCell.Tab.0.bottom/0.23.1440.797@0.23.1440.797" timestamp="1582436965476" />
-    <state width="1278" height="280" key="GridCell.Tab.0.center" timestamp="1582436965474">
+    <state x="398" y="36" key="#DC1_(1)/0.23.1440.797@0.23.1440.797" timestamp="1582438649086" />
+    <state x="136" y="124" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582438602351">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1278" height="280" key="GridCell.Tab.0.center/0.23.1440.797@0.23.1440.797" timestamp="1582436965474" />
-    <state width="1278" height="280" key="GridCell.Tab.0.left" timestamp="1582436965474">
+    <state x="136" y="124" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.797@0.23.1440.797" timestamp="1582438602351" />
+    <state width="1278" height="280" key="GridCell.Tab.0.bottom" timestamp="1582438649129">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1278" height="280" key="GridCell.Tab.0.left/0.23.1440.797@0.23.1440.797" timestamp="1582436965474" />
-    <state width="1278" height="280" key="GridCell.Tab.0.right" timestamp="1582436965475">
+    <state width="1278" height="280" key="GridCell.Tab.0.bottom/0.23.1440.797@0.23.1440.797" timestamp="1582438649129" />
+    <state width="1278" height="280" key="GridCell.Tab.0.center" timestamp="1582438649127">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1278" height="280" key="GridCell.Tab.0.right/0.23.1440.797@0.23.1440.797" timestamp="1582436965475" />
+    <state width="1278" height="280" key="GridCell.Tab.0.center/0.23.1440.797@0.23.1440.797" timestamp="1582438649127" />
+    <state width="1278" height="280" key="GridCell.Tab.0.left" timestamp="1582438649126">
+      <screen x="0" y="23" width="1440" height="797" />
+    </state>
+    <state width="1278" height="280" key="GridCell.Tab.0.left/0.23.1440.797@0.23.1440.797" timestamp="1582438649126" />
+    <state width="1278" height="280" key="GridCell.Tab.0.right" timestamp="1582438649128">
+      <screen x="0" y="23" width="1440" height="797" />
+    </state>
+    <state width="1278" height="280" key="GridCell.Tab.0.right/0.23.1440.797@0.23.1440.797" timestamp="1582438649128" />
     <state x="461" y="276" key="com.intellij.ide.util.TipDialog" timestamp="1582244768626">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
